@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="700" viewBox="0 0 1080 700" font-family="Microsoft YaHei, sans-serif">
+<title>业务流程图 · 智能问答</title>
+<rect width="1080" height="700" fill="#ffffff"/>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<text x="40" y="42" font-size="22" font-weight="bold" fill="#1f4e3a">业务流程图 · 智能问答</text>
+<text x="40" y="66" font-size="13" fill="#777">LangGraph 两节点图：retrieve → generate，带引用、可溯源、查不到就拒答</text>
+
+<g>
+<rect x="40" y="120" width="160" height="60" rx="8" fill="#E6F1FB" stroke="#185FA5"/>
+<text x="120" y="144" text-anchor="middle" font-size="15" font-weight="bold" fill="#0C447C">用户提问</text>
+<text x="120" y="164" text-anchor="middle" font-size="12" fill="#185FA5">问答页 / 免登录</text>
+</g>
+<path d="M200 150 L250 150" fill="none" stroke="#888" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="254" y="120" width="180" height="60" rx="8" fill="#F1EFE8" stroke="#888780"/>
+<text x="344" y="144" text-anchor="middle" font-size="15" font-weight="bold">① Query 向量化</text>
+<text x="344" y="164" text-anchor="middle" font-size="12" fill="#5F5E5A">本地 bge-large-zh（CPU）</text>
+</g>
+<path d="M434 150 L484 150" fill="none" stroke="#888" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="488" y="120" width="180" height="60" rx="8" fill="#F1EFE8" stroke="#888780"/>
+<text x="578" y="144" text-anchor="middle" font-size="15" font-weight="bold">② 向量召回 Top5</text>
+<text x="578" y="164" text-anchor="middle" font-size="12" fill="#5F5E5A">Chroma · 跨源 · 带元数据</text>
+</g>
+<path d="M668 150 L718 150" fill="none" stroke="#888" marker-end="url(#arrow)"/>
+
+<polygon points="722,150 822,110 922,150 822,190" fill="#F1EFE8" stroke="#888780"/>
+<text x="822" y="146" text-anchor="middle" font-size="15" font-weight="bold">③ 相似度判定</text>
+<text x="822" y="166" text-anchor="middle" font-size="12" fill="#5F5E5A">≥ 0.5 ？</text>
+<text x="822" y="212" text-anchor="middle" font-size="12" fill="#A32D2D">低于阈值 → 直接拒答（不调大模型）</text>
+<path d="M860 190 Q 900 230 900 262" fill="none" stroke="#A32D2D" marker-end="url(#arrow)"/>
+
+<path d="M822 190 L822 262" fill="none" stroke="#888" marker-end="url(#arrow)"/>
+<g>
+<rect x="722" y="266" width="200" height="60" rx="8" fill="#F1EFE8" stroke="#888780"/>
+<text x="822" y="290" text-anchor="middle" font-size="15" font-weight="bold">④ 拼提示词</text>
+<text x="822" y="310" text-anchor="middle" font-size="12" fill="#5F5E5A">片段编号 [1]~[5] + 只依据资料</text>
+</g>
+<path d="M722 296 L640 296" fill="none" stroke="#888" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="440" y="266" width="196" height="60" rx="8" fill="#EAF3DE" stroke="#3B6D11"/>
+<text x="538" y="290" text-anchor="middle" font-size="15" font-weight="bold" fill="#27500A">⑤ DeepSeek 生成</text>
+<text x="538" y="310" text-anchor="middle" font-size="12" fill="#3B6D11">LangGraph generate 节点</text>
+</g>
+<path d="M440 296 L370 296" fill="none" stroke="#888" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="170" y="266" width="196" height="60" rx="8" fill="#E6F1FB" stroke="#185FA5"/>
+<text x="268" y="290" text-anchor="middle" font-size="15" font-weight="bold" fill="#0C447C">⑥ SSE 流式返回</text>
+<text x="268" y="310" text-anchor="middle" font-size="12" fill="#185FA5">def + StreamingResponse</text>
+</g>
+<path d="M268 326 L268 362" fill="none" stroke="#888" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="170" y="366" width="196" height="60" rx="8" fill="#FAEEDA" stroke="#BA7517"/>
+<text x="268" y="390" text-anchor="middle" font-size="15" font-weight="bold" fill="#633806">⑦ 回答 + 引用列表</text>
+<text x="268" y="410" text-anchor="middle" font-size="12" fill="#854F0B">source / fid / title 可溯源</text>
+</g>
+
+<g>
+<rect x="40" y="470" width="1000" height="60" rx="8" fill="#FAFAF8" stroke="#B4B2A9"/>
+<text x="60" y="494" font-size="14" font-weight="bold">⑧ 问答日志落库 qa_log</text>
+<text x="60" y="514" font-size="12" fill="#5F5E5A">问题 · 命中数 · 来源 · 最高相似度 · 耗时 · 回答　（审计与调优依据）</text>
+</g>
+<path d="M268 426 L268 466" fill="none" stroke="#888" marker-end="url(#arrow)"/>
+
+<text x="40" y="580" font-size="13" font-weight="bold" fill="#1f4e3a">提示词四条规矩</text>
+<text x="40" y="604" font-size="12" fill="#444">1. 只依据资料片段回答，禁止使用资料之外的知识</text>
+<text x="40" y="624" font-size="12" fill="#444">2. 引用到的信息在句尾标注片段编号 [n]</text>
+<text x="40" y="644" font-size="12" fill="#444">3. 资料不足时明确说"知识库中没有找到相关内容"，不编造</text>
+<text x="40" y="664" font-size="12" fill="#444">4. 涉及用药提醒咨询医师（医疗合规）</text>
+</svg>
