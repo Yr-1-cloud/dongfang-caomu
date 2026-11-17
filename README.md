@@ -147,3 +147,5 @@ uploads/              后台上传的文件
 | 向量化慢 | CPU 跑大模型约 3.2 秒/条，增量跑会自动续 |
 | 改代码没生效 | 加 `--reload`，或手动重启服务 |
 | 进程崩溃且无报错 | Windows DLL 冲突：检查 `import torch` 是否被挪到 langchain 导入之后 |
+## 八、演示实例
+<img width="2546" height="1212" alt="动画01" src="https://github.com/user-attachments/assets/8df19827-ea93-42db-ad94-e5b9a5a4ed97" />
