@@ -1,0 +1,37 @@
+/* 后台整体布局：顶栏 + 左侧菜单 + 内容区 */
+:root { --sidebar-w: 210px; --topbar-h: 48px; }
+body { background: #f5f6f8; height: 100vh; overflow: hidden; }
+
+.topbar { height: var(--topbar-h); background: #1b4d3a; border-bottom: 1px solid #143a2c; }
+.body-area { height: calc(100vh - var(--topbar-h)); }
+
+.sidebar { width: var(--sidebar-w); flex-shrink: 0; overflow-y: auto; }
+.sidebar .nav-link { color: #333; border-radius: 6px; padding: 7px 14px; margin: 2px 8px; font-size: .9rem; }
+.sidebar .nav-link:hover { background: #eef5f1; }
+.sidebar .nav-link.active { background: #198754; color: #fff; }
+.sidebar .menu-group { font-size: .72rem; color: #999; padding: 10px 18px 2px; }
+.sidebar .menu-dir { display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 16px 4px; font-size: .82rem; font-weight: 600; color: #444;
+  cursor: pointer; user-select: none; }
+.sidebar .menu-dir:hover { color: #198754; }
+.sidebar .menu-dir .caret { font-size: .68rem; color: #999; transition: transform .15s; }
+.sidebar .menu-dir.closed .caret { transform: rotate(-90deg); }
+.sidebar .menu-sub.closed { display: none; }
+.sidebar .menu-sub .nav-link { padding-left: 28px; font-size: .86rem; }
+
+.content { overflow-y: auto; }
+.sec .table { background: #fff; }
+.sec .card-stat { border: none; border-radius: 10px; }
+
+.badge-sm { font-size: .72rem; }
+.pointer { cursor: pointer; }
+
+/* 顶栏导航按钮（与问答页风格统一，可来回切换） */
+.navbar-brand { font-weight: 600; letter-spacing: .5px; color: #fff; }
+.navbar-brand:hover { color: #fff; }
+.navbar .nav-btns { display: flex; gap: .4rem; }
+.navbar .btn { border-radius: 8px; transition: background .15s ease, transform .15s ease; }
+.navbar .btn-light { background: #fff; border-color: #fff; color: #1b4d3a; font-weight: 600; }
+.navbar .btn-light:hover { background: #eef3f0; transform: translateY(-1px); }
+.navbar .btn-outline-light { color: #fff; border-color: rgba(255,255,255,.55); }
+.navbar .btn-outline-light:hover { background: rgba(255,255,255,.12); color: #fff; }

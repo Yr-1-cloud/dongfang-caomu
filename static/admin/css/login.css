@@ -1,0 +1,139 @@
+/* ===== 登录页：新中式极简国风 · 莫兰迪墨绿 + 米白 ===== */
+:root{
+  --green:#2f4a3f;     /* 莫兰迪墨绿 */
+  --green-d:#243a31;
+  --green-l:#3a5a4c;
+  --cream:#f5f1e8;     /* 米奶白 */
+  --gold:#bd9f63;      /* 细金线 */
+  --ink:#2e3a34;       /* 深墨字 */
+  --muted:#8a9a90;     /* 次要灰绿 */
+  --line:#e2dccd;      /* 边框米灰 */
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--cream); }
+
+/* 顶栏：互通导航 */
+.navbar { position: fixed !important; top: 0; left: 0; right: 0; z-index: 1030;
+  background: var(--green) !important; border-bottom: 1px solid var(--green-d) !important; }
+.navbar-brand { font-weight: 600; letter-spacing: .5px; color: #fff !important; }
+.navbar-brand:hover { color: #fff !important; }
+.navbar .nav-btns { display: flex; gap: .4rem; }
+.navbar .btn-outline-light { color: #fff; border-color: rgba(255,255,255,.5); border-radius: 8px; transition: background .15s; }
+.navbar .btn-outline-light:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+.login-split { display: flex; margin-top: 56px; min-height: calc(100vh - 56px); }
+
+/* ---------- 左半区：品牌叙事 ---------- */
+.brand-pane {
+  flex: 1 1 50%;
+  position: relative; overflow: hidden;
+  background: linear-gradient(155deg, #22382f 0%, #2f4a3f 55%, #39584b 100%);
+  color: #fff;
+}
+.brand-bg { position: absolute; inset: 0; width: 100%; height: 100%; filter: blur(1px); }
+.brand-vertical {
+  position: absolute; top: 28px; left: 28px;
+  writing-mode: vertical-rl; letter-spacing: 6px;
+  font-family: "Songti SC","STSong","SimSun",serif;
+  font-size: .82rem; opacity: .7;
+}
+.brand-badge {
+  position: absolute; top: 24px; right: 24px;
+  width: 44px; height: 44px; border: 1px solid var(--gold); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Songti SC","STSong",serif; font-size: .8rem; color: var(--gold);
+  opacity: .85; letter-spacing: 1px;
+}
+.brand-bottom { position: absolute; left: 40px; right: 40px; bottom: 44px; }
+.brand-title {
+  font-family: "Songti SC","STSong","SimSun",serif;
+  font-size: 2.4rem; font-weight: 700; letter-spacing: 4px; margin: 0 0 .5rem;
+}
+.brand-slogan { font-size: 1rem; letter-spacing: 4px; opacity: .85; margin: 0 0 1.8rem; }
+.brand-points { list-style: none; padding: 0; margin: 0; }
+.brand-points li { position: relative; padding-left: 18px; margin: .55rem 0; font-size: .95rem; opacity: .9; }
+.brand-points li::before {
+  content: ''; position: absolute; left: 0; top: .55em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: .9;
+}
+
+/* ---------- 右半区：账号登录 ---------- */
+.form-pane {
+  flex: 1 1 50%;
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px 32px;
+}
+.auth-card { width: 100%; max-width: 360px; }
+.welcome { color: var(--muted); font-size: .9rem; letter-spacing: 2px; margin: 0 0 .3rem; }
+.auth-title {
+  position: relative; font-size: 1.9rem; font-weight: 700; color: var(--ink);
+  margin: 0 0 1.6rem; letter-spacing: 1px;
+}
+.gold-rule { display: block; width: 46px; height: 2px; background: var(--gold); margin-top: 10px; }
+
+/* 标签切换 */
+.tabs { display: flex; gap: 10px; }
+.tab {
+  flex: 1; padding: .6rem; border-radius: 10px; cursor: pointer;
+  font-weight: 600; font-size: .95rem; transition: .15s; border: 1px solid transparent;
+}
+.tab.active { background: var(--green); color: #fff; border-color: var(--green); }
+.tab:not(.active) { background: #fff; color: var(--green); border-color: var(--line); }
+
+/* 输入框 */
+.field { position: relative; margin-bottom: 14px; }
+.field-input {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--line);
+  border-radius: 10px; background: #fff; color: var(--ink); font-size: .95rem;
+  outline: none; transition: border-color .15s;
+}
+.field-input::placeholder { color: #b3aa98; }
+.field-input:focus { border-color: var(--green); }
+.pwd-field .eye, .code-field .code-send { position: absolute; top: 50%; transform: translateY(-50%); }
+.pwd-field .eye { right: 12px; background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px; }
+.pwd-field .eye:hover { color: var(--green); }
+.code-field .field-input { padding-right: 104px; }
+.code-field .code-send {
+  right: 8px; background: none; border: 1px solid var(--green); color: var(--green);
+  border-radius: 8px; padding: 6px 10px; font-size: .8rem; cursor: pointer;
+}
+
+/* 忘记密码 */
+.forgot-row { text-align: right; margin-bottom: 18px; }
+.link-forgot { color: var(--muted); font-size: .85rem; text-decoration: none; }
+.link-forgot:hover { color: var(--green); }
+
+/* 主按钮 */
+.btn-primary {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--green); color: #fff; border: none; border-radius: 12px;
+  padding: 13px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background .15s;
+}
+.btn-primary:hover { background: var(--green-d); }
+
+/* 其他登录方式 */
+.divider { display: flex; align-items: center; gap: 12px; margin: 26px 0 18px; color: var(--muted); font-size: .82rem; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+
+.oauth { display: flex; gap: 12px; }
+.oauth-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: #fff; border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px 6px; color: var(--ink); font-size: .8rem; cursor: pointer; transition: border-color .15s;
+}
+.oauth-btn:hover { border-color: var(--green); color: var(--green); }
+
+/* 注册 */
+.register-tip { text-align: center; margin: 22px 0 0; color: var(--muted); font-size: .88rem; }
+.register-tip a { color: var(--green); font-weight: 600; text-decoration: none; }
+.register-tip a:hover { text-decoration: underline; }
+
+/* ---------- 响应式：窄屏上下堆叠 ---------- */
+@media (max-width: 900px) {
+  .login-split { flex-direction: column; }
+  .brand-pane { flex: none; }
+  .brand-bottom { position: static; padding: 30px 28px 34px; }
+  .brand-vertical, .brand-badge { display: none; }
+  .form-pane { flex: none; padding: 40px 24px; }
+}

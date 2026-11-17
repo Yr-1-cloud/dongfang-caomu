@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>知识管理后台 · 东方草木</title>
+  <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- 顶栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark py-2 topbar flex-nowrap" style="background:#1b4d3a;border-bottom:1px solid #143a2c;">
+  <div class="container-fluid px-3 px-lg-4">
+    <a class="navbar-brand" href="/admin/">🌿 东方草木</a>
+    <div class="nav-btns ms-auto d-flex gap-2 me-3">
+      <a class="btn btn-outline-light btn-sm px-3" href="/qa/">问答</a>
+      <a class="btn btn-light btn-sm px-3" href="/admin/">知识库管理</a>
+    </div>
+    <div class="dropdown me-3">
+      <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+        <span id="who">-</span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><button class="dropdown-item" id="btnLogout">退出登录</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex body-area">
+  <!-- 左侧菜单 -->
+  <aside class="sidebar bg-white border-end pt-2" id="sidebar"></aside>
+
+  <!-- 内容区：每个模块一个 sec 容器，内容由 JS 渲染 -->
+  <main class="flex-grow-1 p-3 overflow-auto content" id="main">
+    <div class="sec d-none" id="sec-kb"></div>
+    <div class="sec d-none" id="sec-doc"></div>
+    <div class="sec d-none" id="sec-qalog"></div>
+    <div class="sec d-none" id="sec-user"></div>
+    <div class="sec d-none" id="sec-role"></div>
+    <div class="sec d-none" id="sec-dept"></div>
+    <div class="sec d-none" id="sec-menu"></div>
+    <div class="sec d-none" id="sec-dict"></div>
+    <div class="sec d-none" id="sec-attach"></div>
+    <div class="sec d-none" id="sec-config"></div>
+    <div class="sec d-none" id="sec-loginlog"></div>
+    <div class="sec d-none" id="sec-operlog"></div>
+  </main>
+</div>
+
+<!-- 通用弹窗 -->
+<div class="modal fade" id="dlg" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header py-2">
+        <h6 class="modal-title" id="dlgTitle"></h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="dlgBody"></div>
+      <div class="modal-footer py-1">
+        <button class="btn btn-sm btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button class="btn btn-sm btn-success" id="dlgOk">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/lib/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
