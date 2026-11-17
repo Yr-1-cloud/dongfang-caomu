@@ -148,5 +148,7 @@ uploads/              后台上传的文件
 | 改代码没生效 | 加 `--reload`，或手动重启服务 |
 | 进程崩溃且无报错 | Windows DLL 冲突：检查 `import torch` 是否被挪到 langchain 导入之后 |
 ## 八、演示实例
-<img width="100%" alt="RAG 流式问答" src="https://github.com/user-attachments/assets/8df19827-ea93-42db-ad94-e5b9a54ed97" />
+![RAG 流式问答](assets/qa.gif)
+
+
 
